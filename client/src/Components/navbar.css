@@ -1,0 +1,149 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff; /* White background for the navbar */
+  padding: 10px 20px;
+  color: #333333; /* Dark gray text color for contrast */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  position: relative;
+  /* font-family: WF Visual Sans Text, sans-serif; */
+
+}
+
+.navbar a {
+  position: relative;
+  color: #333333; /* Default text color */
+  text-decoration: none;
+  font-size: 16px;
+  font-style:fantasy;
+  /* font-family: WF Visual Sans Text, sans-serif; */
+  font-family: Avenir, "Open Sans", sans-serif;
+  padding: 8px 12px;
+  overflow: hidden;
+  display: inline-block;
+  transition: color 0.3s ease;
+  z-index:1
+}
+
+.navbar a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -90%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #3498db, #e74c3c); /* Gradient background */
+  transition: bottom 0.3s ease, opacity 0.3s ease;
+  z-index: -1;
+  opacity: 0;
+}
+
+.navbar a:hover::before {
+  bottom: 0;
+  opacity: 1;
+}
+
+.navbar a:hover {
+  color: #ffffff; /* Change text color on hover */
+}
+
+
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.pincode-input {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family:Avenir, "Open Sans", sans-serif;
+  font-size: 14px;
+  width: 200px;
+}
+
+.search-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-family:Avenir, "Open Sans", sans-serif;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.search-button:hover {
+  background-color: #45a049;
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+}
+
+.profile-link {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.fa-user {
+  margin-left: 5px;
+}
+
+/* Style for the search input */
+input[type="search"] {
+  border: 2px solid #d4d4d4; /* Default border color */
+  border-radius: 4px; /* Rounded corners for a modern look */
+  padding: 8px 12px; /* Padding for a better user experience */
+  font-size: 1rem; /* Font size for readability */
+  transition: all 0.3s ease; /* Smooth transition for focus effects */
+  font-family: Avenir, "Open Sans", sans-serif;
+
+}
+
+/* Focus state styling */
+input[type="search"]:focus {
+  border: 2.5px solid #3498db; /* Highlight border color on focus */
+  outline: none; /* Remove default browser outline */
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* Subtle shadow effect */
+  background-color: #fafafa; /* Light background color on focus */
+}
+
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar a,
+  .profile-link {
+    margin-top: 10px;
+    margin-right: 0;
+  }
+
+  .search-container {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .pincode-input {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .profile-container {
+    margin-top: 10px;
+    width: 100%;
+  }
+}

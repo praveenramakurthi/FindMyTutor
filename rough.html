@@ -1,0 +1,98 @@
+import React, { useContext, useEffect, useState } from 'react';
+import { TutorContext } from '../../Context/Context';
+import './home.css';
+
+const Home = () => {
+    const { tutors, searchResults, email, setUserEmail, userEmail } = useContext(TutorContext);
+    const [selectedLanguages, setSelectedLanguages] = useState([]);
+    const [selectedStandard, setSelectedStandard] = useState('');
+    const [selectedCourses, setSelectedCourses] = useState([]);
+
+    useEffect(() => {
+        if (email && email !== userEmail) {
+            setUserEmail(email);
+        }
+    }, [email, userEmail, setUserEmail]);
+
+    const handleFilterChange = (e, type) => {
+        const value = e.target.value;
+        if (type === 'language') {
+            setSelectedLanguages(
+                e.target.checked
+                    ? [...selectedLanguages, value]
+                    : selectedLanguages.filter(lang => lang !== value)
+            );
+        } else if (type === 'standard') {
+            setSelectedStandard(value);
+        } else if (type === 'course') {
+            setSelectedCourses(
+                e.target.checked
+                    ? [...selectedCourses, value]
+                    : selectedCourses.filter(course => course !== value)
+            );
+        }
+    };
+
+    const filteredTutors = tutors.filter(tutor => {
+        const matchesLanguage = selectedLanguages.length === 0 || selectedLanguages.some(lang => tutor.subjects.includes(lang));
+        const matchesStandard = selectedStandard === '' || tutor.standard === selectedStandard;
+        const matchesCourse = selectedCourses.length === 0 || selectedCourses.some(course => tutor.courses.includes(course));
+        return matchesLanguage && matchesStandard && matchesCourse;
+    });
+
+    const displayedTutors = searchResults.length > 0 ? searchResults : filteredTutors;
+
+    return (
+        <div className="home-container">
+            <div className="filter-sidebar">
+                <h2>Filters</h2>
+                <div className="filter-group">
+                    <h3>Languages</h3>
+                    <label><input type="checkbox" value="JavaScript" onChange={(e) => handleFilterChange(e, 'language')} /> JavaScript</label>
+                    <label><input type="checkbox" value="Python" onChange={(e) => handleFilterChange(e, 'language')} /> Python</label>
+                    <label><input type="checkbox" value="Java" onChange={(e) => handleFilterChange(e, 'language')} /> Java</label>
+                </div>
+                <div className="filter-group">
+                    <h3>Standard</h3>
+                    <select value={selectedStandard} onChange={(e) => handleFilterChange(e, 'standard')}>
+                        <option value="">All</option>
+                        <option value="6th-10th">Class 6</option>
+                        <option value="6th-10th">Class 7</option>
+                        <option value="6th-10th">Class 8</option>
+                        <option value="6th-10th">Class 9</option>
+                        <option value="6th-10th">Class 10</option>
+                        <option value="Intermediate">Intermediate</option>
+                    </select>
+                </div>
+                <div className="filter-group">
+                    <h3>Courses</h3>
+                    <label><input type="checkbox" value="React" onChange={(e) => handleFilterChange(e, 'course')} /> React</label>
+                    <label><input type="checkbox" value="Angular" onChange={(e) => handleFilterChange(e, 'course')} /> Angular</label>
+                    <label><input type="checkbox" value="Node.js" onChange={(e) => handleFilterChange(e, 'course')} /> Node.js</label>
+                </div>
+            </div>
+            <div className="content">
+                <h1>Welcome to MyPrivateTutor</h1>
+                <p>Find the best tutors for your needs.</p>
+                {displayedTutors.length > 0 ? (
+                    <div className="tutor-grid">
+                        {displayedTutors.map((tutor) => (
+                            <div key={tutor._id} className="tutor-card">
+                                <img src={tutor.image} alt={`${tutor.name}'s profile`} />
+                                <p><strong>Name:</strong> {tutor.name}</p>
+                                <p><strong>Subjects:</strong> {tutor.subjects.join(', ')}</p>
+                                <p><strong>Experience:</strong> {tutor.experience} years</p>
+                                <p><strong>Location:</strong> {tutor.location}</p>
+                                <p><strong>Pincode:</strong> {tutor.pincode}</p>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <p className="no-tutors">No tutors found.</p>
+                )}
+            </div>
+        </div>
+    );
+};
+
+export default Home;

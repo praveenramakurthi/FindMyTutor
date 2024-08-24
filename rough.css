@@ -1,0 +1,86 @@
+.profile-box {
+    width: 400px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .profile-box h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .profile-image {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-image img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #fff; /* Optional: Add border to the image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .no-image-placeholder {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #999;
+  }
+  
+  .profile-box label {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .profile-box input[type="text"],
+  .profile-box input[type="email"],
+  .profile-box input[type="file"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .profile-box .save-button,
+  .profile-box .close-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .profile-box .save-button:hover,
+  .profile-box .close-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .profile-box .close-button {
+    background-color: #6c757d;
+  }
+  
+  .profile-box .close-button:hover {
+    background-color: #5a6268;
+  }
+  

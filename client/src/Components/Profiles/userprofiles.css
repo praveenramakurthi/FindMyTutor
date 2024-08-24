@@ -1,0 +1,107 @@
+.profile-box {
+    position: absolute;
+    top: 50px; /* Adjust based on your navbar height */
+    right: 20px; /* Aligns to the right side of the navbar */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 1000; /* Ensure it appears above other elements */
+    max-width: 350px; /* Set a maximum width for larger screens */
+    width: calc(100% - 40px); /* Ensure it doesn't overflow on small screens */
+    box-sizing: border-box;
+    transition: all 0.3s ease-out;
+
+}
+.profile-box h3 {
+    font-family:Avenir, "Open Sans", sans-serif;
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.profile-box label {
+    font-family:Avenir, "Open Sans", sans-serif;
+    font-weight: bold;
+    color: #555;
+    margin-top: 10px;
+    display: block;
+}
+
+.profile-box input[type="text"],
+.profile-box input[type="email"] {
+    display: block;
+    font-family:Avenir, "Open Sans", sans-serif;
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+.profile-box input[type="text"]:focus,
+.profile-box input[type="email"]:focus {
+    border-color: #007BFF;
+}
+
+.profile-box button {
+    background-color: #007BFF;
+    color: white;
+    font-family:Avenir, "Open Sans", sans-serif;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px 0;
+    transition: background-color 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.profile-box button:hover {
+    background-color: #0056b3;
+}
+
+.profile-box .save-button {
+    background-color: #28a745;
+}
+
+.profile-box .save-button:hover {
+    background-color: #218838;
+}
+
+.profile-box .close-button {
+    background-color: #f44336; /* Red */
+}
+
+.profile-box .close-button:hover {
+    background-color: #d32f2f; /* Darker red */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile-box {
+        right: 10px;
+        left: 10px;
+        top: 20px; /* Adjust based on your navbar height */
+        width: calc(100% - 20px); /* Reduce width further on medium screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-box {
+        padding: 15px;
+        top: 15px;
+        width: calc(100% - 20px); /* Ensure it fits within smaller screens */
+    }
+
+    .profile-box h3 {
+        font-size: 1.25em;
+    }
+
+    .profile-box button {
+        padding: 8px 10px;
+    }
+}
